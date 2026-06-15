@@ -1,0 +1,89 @@
+<div class="transfer-page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="title">Transfer Money</div>
+    <div class="subtitle">Fast, secure and simple</div>
+  </div>
+
+  <!-- Main Card -->
+  <div class="card">
+
+    <!-- From Account Box -->
+    <div class="from-box">
+      <div class="avatar">
+        {{ usernameInitial }}
+      </div>
+
+      <div class="from-details">
+        <div class="from-label">
+          {{ holderName ? holderName : 'From Account' }}
+          <span *ngIf="auth.isAdmin" class="role-pill">Admin</span>
+        </div>
+
+        <div class="from-account">
+          Account: {{ form.get('fromAccountId')?.value || fromAccountId }}
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Transfer Form -->
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="field" *ngIf="auth.isAdmin">
+        <label>From Account Number</label>
+        <input
+          type="number"
+          formControlName="fromAccountId"
+          placeholder="Enter sender account number"
+          [readonly]="!auth.isAdmin"
+        />
+      </div>
+
+      <div class="field">
+        <label>To Account Number</label>
+        <input
+          type="number"
+          formControlName="toAccountId"
+          placeholder="Enter recipient account number"
+        />
+      </div>
+
+      <div class="field">
+        <label>Amount</label>
+        <div class="amount-wrap">
+          <span class="currency">₹</span>
+          <input
+            type="number"
+            formControlName="amount"
+            placeholder="0.00"
+          />
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary" type="submit" [disabled]="loading">
+          {{ loading ? 'Processing...' : 'Transfer Now' }}
+        </button>
+
+        <button type="button" class="cancel" (click)="cancel()">
+          Cancel
+        </button>
+      </div>
+
+      <div *ngIf="success" class="success-msg">
+        Transfer Successful!
+      </div>
+
+      <div *ngIf="error" class="error-msg">
+        {{ error }}
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<app-navbar></app-navbar>

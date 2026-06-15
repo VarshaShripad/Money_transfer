@@ -1,0 +1,37 @@
+<div class="rewards-page">
+
+  <div class="header">
+    <div class="title">Rewards</div>
+    <div class="subtitle">Earned reward points from eligible transfers</div>
+  </div>
+
+  <div class="card summary-card" *ngIf="!loading && !error && rewardSummary">
+    <div class="summary-label">Total Reward Points</div>
+    <div class="summary-value">{{ rewardSummary.totalRewardPoints }}</div>
+    <div class="summary-note">
+      Rewards are earned for successful transfers over ₹100, at 1 point per ₹100 transferred.
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="state loading">Loading rewards...</div>
+  <div *ngIf="error" class="state error">{{ error }}</div>
+
+  <div *ngIf="!loading && !error && rewardSummary?.rewards?.length === 0" class="empty">
+    No rewards earned yet. Complete eligible transfers to start earning points.
+  </div>
+
+  <div class="list" *ngIf="!loading && !error && rewardSummary?.rewards?.length">
+    <div class="reward-item" *ngFor="let reward of rewardSummary.rewards; trackBy: trackByReward">
+      <div class="left">
+        <div class="reward-title">Transaction {{ reward.transactionId }}</div>
+        <div class="reward-meta">Earned on {{ reward.earnedOn | date:'medium' }}</div>
+      </div>
+      <div class="right">
+        <div class="points">+{{ reward.rewardPoints }}</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<app-navbar></app-navbar>

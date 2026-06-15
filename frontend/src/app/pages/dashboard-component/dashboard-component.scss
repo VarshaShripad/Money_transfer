@@ -1,0 +1,147 @@
+.page {
+  min-height: 100vh;
+  padding: 28px 24px 110px; 
+  background: #F0EFEB;
+
+//background: linear-gradient(135deg, #e4efe9 0%, #e4efe9 100%);
+}
+
+.header {
+  max-width: 980px;
+  margin: 0 auto 18px;
+}
+
+.hi-line {
+  font-size: 34px;
+  font-weight: 800;
+  color: #283618;
+}
+
+.hi-line .name {
+  color:#283618;// #dda15e; 
+}
+
+.welcome-back {
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #10b981; 
+}
+
+.balance-card {
+  max-width: 980px;
+  margin: 18px auto 22px;
+  padding: 22px;
+  border-radius: 18px;
+  background: #d1fae5;
+  border: 1px solid #a7f3d0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.balance-card .label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #065f46;
+}
+
+.balance-card .amount {
+  font-size: 42px;
+  font-weight: 900;
+  color: #064e3b;
+}
+
+.error {
+  max-width: 980px;
+  margin: 0 auto 12px;
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+.grid {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.card-btn {
+  height: 140px; 
+  border-radius: 18px;
+  background: #D6E2E9;
+  border: 1px solid #e5e7eb;
+  padding: 18px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.card-btn:hover {
+  transform: translateY(-2px);
+  border-color: #7cb0ec;             
+  background: #99C1DE;                
+  box-shadow: 0 14px 40px rgba(37, 99, 235, 0.18);
+}
+
+
+.card-btn:active {
+  transform: translateY(0px);
+}
+
+.card-btn .title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 6px;
+}
+
+.card-btn .subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.card-btn.danger:hover {
+  background: #fff5f5;              
+  border-color: #fca5a5;
+  box-shadow: 0 14px 40px rgba(220, 38, 38, 0.18);
+}
+
+.card-btn:hover .title {
+  color: #000000; 
+}                   
+
+.card-btn.danger:hover .title {
+  color: #b91c1c;                    
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 22px 14px 110px;
+  }
+
+  .hi-line {
+    font-size: 28px;
+  }
+
+  .balance-card .amount {
+    font-size: 34px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-btn {
+    height: 120px;
+  }
+}
+
+.page { padding-bottom: 110px; }

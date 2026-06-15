@@ -1,0 +1,53 @@
+<div class="page">
+
+  <!-- Header: Hi + Welcome back (same variable: account.holderName) -->
+  <div class="header" *ngIf="account">
+    <div class="hi-line">
+      Hi <span class="name">{{ account.holderName }}</span>
+    </div>
+    <div class="welcome-back">
+      Welcome back
+    </div>
+  </div>
+
+  <!-- Balance Section (same variable: balance) -->
+  <div class="balance-card" *ngIf="balance !== undefined">
+    <div class="label">Account Balance</div>
+    <div class="amount">₹ {{ balance | number: '1.2-2' }}</div>
+  </div>
+
+  <!-- Error (same variable: error) -->
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <!-- Bigger 2x2 Grid (same methods: goTransfer/goHistory/goProfile/logout) -->
+  <div class="grid">
+    <button class="card-btn" type="button" (click)="goTransfer()">
+      <div class="title">Transfer</div>
+      <div class="subtitle">Send money securely</div>
+    </button>
+
+    <button class="card-btn" type="button" (click)="goHistory()">
+      <div class="title">History</div>
+      <div class="subtitle">View transactions</div>
+    </button>
+
+    <button class="card-btn" type="button" (click)="goRewards()">
+      <div class="title">Rewards</div>
+      <div class="subtitle">View earned points</div>
+    </button>
+
+    <button class="card-btn" type="button" (click)="goProfile()">
+      <div class="title">Profile</div>
+      <div class="subtitle">Account details</div>
+    </button>
+
+    <button class="card-btn danger" type="button" (click)="logout()">
+      <div class="title">Logout</div>
+      <div class="subtitle">End your session</div>
+    </button>
+  </div>
+
+</div>
+
+<!-- Bottom Navbar -->
+<app-navbar></app-navbar>

@@ -1,0 +1,21 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+
+# IntelliJ IDEA
+.idea/
+
+# Node.js (for Angular)
+node_modules/
+dist/
+
+# OS-specific
+Thumbs.db
+.DS_Store
+
+# Log files
+*.log
+/.metadata/

@@ -1,0 +1,92 @@
+<div class="page">
+
+  <div class="card">
+    <div class="icon">₹</div>
+
+    <h2 class="heading">
+      {{ mode === 'LOGIN' ? 'Welcome Back' : 'Create Account' }}
+    </h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <!-- Signup only -->
+      <div *ngIf="mode === 'SIGNUP'">
+        <label>Holder Name</label>
+        <input
+          type="text"
+          formControlName="holderName"
+          placeholder="Enter holder name" />
+
+        <small class="field-error" *ngIf="showError(holderNameCtrl)">
+          <span *ngIf="holderNameCtrl.errors?.['required']">
+            Holder name is required.
+          </span>
+          <span *ngIf="holderNameCtrl.errors?.['minlength']">
+            Holder name must be at least 3 characters.
+          </span>
+          <span *ngIf="holderNameCtrl.errors?.['maxlength']">
+            Holder name must be at most 50 characters.
+          </span>
+        </small>
+      </div>
+
+      <label>Username</label>
+      <input
+        type="text"
+        formControlName="username"
+        placeholder="Enter your username" />
+
+      <small class="field-error" *ngIf="showError(usernameCtrl)">
+        <span *ngIf="usernameCtrl.errors?.['required']">
+          Username is required.
+        </span>
+        <span *ngIf="usernameCtrl.errors?.['minlength']">
+          Username must be at least 3 characters.
+        </span>
+        <span *ngIf="usernameCtrl.errors?.['maxlength']">
+          Username must be at most 30 characters.
+        </span>
+        <span *ngIf="usernameCtrl.errors?.['pattern']">
+          Only letters, numbers, dot, underscore, hyphen allowed.
+        </span>
+      </small>
+
+      <label>Password</label>
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="Enter your password" />
+
+      <small class="field-error" *ngIf="showError(passwordCtrl)">
+        <span *ngIf="passwordCtrl.errors?.['required']">
+          Password is required.
+        </span>
+        <span *ngIf="passwordCtrl.errors?.['minlength']">
+          Password must be at least 3 characters.
+        </span>
+        <span *ngIf="passwordCtrl.errors?.['maxlength']">
+          Password must be at most 50 characters.
+        </span>
+      </small>
+
+      <button type="submit" class="primary" [disabled]="loading">
+        {{ loading ? 'Please wait...' : (mode === 'LOGIN' ? 'Login' : 'Sign Up') }}
+      </button>
+
+      <p class="success" *ngIf="success">{{ success }}</p>
+      <p class="error" *ngIf="error">{{ error }}</p>
+
+      <!-- Login / Signup toggle -->
+      <div class="switch">
+        <span>
+          {{ mode === 'LOGIN' ? 'New user?' : 'Already have an account?' }}
+        </span>
+        <button type="button" class="link" (click)="toggleMode()">
+          {{ mode === 'LOGIN' ? 'Sign up' : 'Login' }}
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+</div>

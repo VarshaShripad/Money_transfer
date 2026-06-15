@@ -1,0 +1,42 @@
+.profile-page {
+  padding: 24px;
+  padding-bottom: 90px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.greeting {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.label {
+  font-weight: 500;
+  margin-right: 6px;
+}
+
+.balance {
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.state {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.error {
+  color: #c62828;
+}

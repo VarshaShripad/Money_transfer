@@ -1,0 +1,35 @@
+<div class="profile-page">
+
+  <div class="card" *ngIf="!loading && account">
+
+    <div class="greeting">
+      Hi, {{ account.holderName }}
+    </div>
+
+    <div class="info">
+      <div>
+        <span class="label">Account ID:</span>
+        <span>{{ account.id }}</span>
+      </div>
+
+      <div>
+        <span class="label">Balance:</span>
+        <span class="balance">
+          ₹ {{ balance | number:'1.2-2' }}
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="loading" class="state">
+    Loading...
+  </div>
+
+  <div *ngIf="error" class="state error">
+    {{ error }}
+  </div>
+
+  <app-navbar></app-navbar>
+
+</div>

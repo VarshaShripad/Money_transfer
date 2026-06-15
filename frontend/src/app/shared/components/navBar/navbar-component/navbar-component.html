@@ -1,0 +1,37 @@
+<nav class="navbar">
+  <button
+    type="button"
+    class="nav-box"
+    [class.active]="isActive('/dashboard')"
+    (click)="goHome()"
+  >
+    Home
+  </button>
+
+  <button
+    type="button"
+    class="nav-box"
+    [class.active]="isActive('/transfer')"
+    (click)="goTransfer()"
+  >
+    Transfer
+  </button>
+
+  <button
+    type="button"
+    class="nav-box"
+    [class.active]="isActive('/history')"
+    (click)="goHistory()"
+  >
+    History
+  </button>
+
+  <button
+    type="button"
+    class="nav-box"
+    [class.active]="isActive('/rewards')"
+    (click)="goRewards()"
+  >
+    Rewards
+  </button>
+</nav>

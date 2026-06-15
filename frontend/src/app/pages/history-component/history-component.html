@@ -1,0 +1,81 @@
+<div class="history-page">
+
+  <!-- Page Header -->
+  <div class="header">
+    <div class="title">Transaction History</div>
+    <div class="subtitle">Track your sent & received transfers</div>
+  </div>
+
+  <div class="card">
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button
+        type="button"
+        class="tab"
+        [class.active]="filter==='ALL'"
+        (click)="setFilter('ALL')"
+      >
+        All
+      </button>
+
+      <button
+        type="button"
+        class="tab"
+        [class.active]="filter==='SENT'"
+        (click)="setFilter('SENT')"
+      >
+        Sent
+      </button>
+
+      <button
+        type="button"
+        class="tab"
+        [class.active]="filter==='RECEIVED'"
+        (click)="setFilter('RECEIVED')"
+      >
+        Received
+      </button>
+    </div>
+
+    <!-- States -->
+    <div *ngIf="loading" class="state loading">Loading...</div>
+    <div *ngIf="error" class="state error">{{ error }}</div>
+
+    <!-- Empty state -->
+    <div *ngIf="!loading && !error && filteredTxs?.length === 0" class="empty">
+      No transactions found for this filter.
+    </div>
+
+    <!-- List -->
+    <div class="list" *ngIf="!loading && !error && filteredTxs?.length">
+      <div class="txn" *ngFor="let tx of filteredTxs">
+        <div class="left">
+          <div class="row1">
+            <div class="txn-title">
+              {{ isSent(tx) ? 'Transfer to' : 'Received from' }}
+              <span class="acct">
+                {{ isSent(tx) ? tx.toAccountId : tx.fromAccountId }}
+              </span>
+            </div>
+          </div>
+
+          <div class="date">{{ tx.createdOn | date:'medium' }}</div>
+        </div>
+
+        <div class="right">
+          <div class="amt" [ngClass]="amountClass(tx)">
+            {{ isSent(tx) ? '-' : '+' }} ₹ {{ tx.amount }}
+          </div>
+
+          <div class="badge" [ngClass]="badgeClass(tx.status)">
+            {{ tx.status }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Navbar (keep only once) -->
+<app-navbar></app-navbar>

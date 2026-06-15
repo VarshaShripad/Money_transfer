@@ -1,0 +1,190 @@
+.transfer-page {
+  min-height: 100vh;
+  padding: 28px 24px 110px;
+  background: #F0EFEB;
+}
+
+.header {
+  max-width: 980px;
+  margin: 0 auto 18px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.subtitle {
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+/* Card */
+.card {
+  max-width: 980px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+/* From Account */
+.from-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 16px;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  margin-bottom: 18px;
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.from-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.from-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 900;
+  color: #1d4ed8;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.from-account {
+  margin-top: 2px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.role-pill {
+  font-size: 11px;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #76abec;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.35);
+  flex-shrink: 0;
+}
+
+/* Form */
+.field {
+  margin-bottom: 14px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.field input {
+  width: 100%;
+  height: 46px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  padding: 0 14px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.amount-wrap {
+  position: relative;
+}
+
+.currency {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 900;
+}
+
+.amount-wrap input {
+  padding-left: 34px;
+}
+
+/* Buttons */
+.actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.primary {
+  height: 46px;
+  border-radius: 14px;
+  border: none;
+  background: #22c55e;
+  color: #ffffff;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.primary:hover {
+  background: #16a34a;
+}
+
+.cancel {
+  height: 46px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.cancel:hover {
+  background: #f1f5f9;
+}
+
+/* Messages */
+.success-msg {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #d1fae5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+  font-weight: 900;
+}
+
+.error-msg {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #9f1239;
+  font-weight: 900;
+}
