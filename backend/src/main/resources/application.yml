@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/money_transfer_db
     username: root
-    password: Root123$
+    password: Cloud@123$
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -21,14 +21,14 @@ spring:
       mode: always
 
 snowflake:
-  url: jdbc:snowflake://dr49235.me-central-1.aws.snowflakecomputing.com
+  url: jdbc:snowflake://jwplyga-ye20201.snowflakecomputing.com
   user: Varsha
   password: Varshashripad@2004
   warehouse: COMPUTE_WH
   database: MONEY_TRANSFER_DW
   schema: ANALYTICS
   role: ACCOUNTADMIN
-  
+
 logging:
   level:
     org.hibernate.SQL: DEBUG

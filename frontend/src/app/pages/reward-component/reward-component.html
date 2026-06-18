@@ -13,23 +13,46 @@
     </div>
   </div>
 
-  <div *ngIf="loading" class="state loading">Loading rewards...</div>
-  <div *ngIf="error" class="state error">{{ error }}</div>
+  <div *ngIf="loading" class="state loading">
+    Loading rewards...
+  </div>
 
-  <div *ngIf="!loading && !error && rewardSummary?.rewards?.length === 0" class="empty">
+  <div *ngIf="error" class="state error">
+    {{ error }}
+  </div>
+
+  <div
+    *ngIf="!loading && !error && (rewardSummary?.rewards?.length ?? 0) === 0"
+    class="empty">
     No rewards earned yet. Complete eligible transfers to start earning points.
   </div>
 
-  <div class="list" *ngIf="!loading && !error && rewardSummary?.rewards?.length">
-    <div class="reward-item" *ngFor="let reward of rewardSummary.rewards; trackBy: trackByReward">
+  <div
+    class="list"
+    *ngIf="!loading && !error && (rewardSummary?.rewards?.length ?? 0) > 0">
+
+    <div
+      class="reward-item"
+      *ngFor="let reward of (rewardSummary?.rewards ?? []); trackBy: trackByReward">
+
       <div class="left">
-        <div class="reward-title">Transaction {{ reward.transactionId }}</div>
-        <div class="reward-meta">Earned on {{ reward.earnedOn | date:'medium' }}</div>
+        <div class="reward-title">
+          Transaction {{ reward.transactionId }}
+        </div>
+
+        <div class="reward-meta">
+          Earned on {{ reward.earnedOn | date:'medium' }}
+        </div>
       </div>
+
       <div class="right">
-        <div class="points">+{{ reward.rewardPoints }}</div>
+        <div class="points">
+          +{{ reward.rewardPoints }}
+        </div>
       </div>
+
     </div>
+
   </div>
 
 </div>
