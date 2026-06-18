@@ -1,77 +1,109 @@
 .rewards-page {
-  padding: 1.2rem;
-  max-width: 900px;
+  min-height: 100vh;
+  padding: 34px 24px 120px;
+  max-width: 980px;
   margin: 0 auto;
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.11), transparent 18%),
+    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.08), transparent 20%),
+    #f7fbff;
 }
 
 .header {
-  margin-bottom: 1rem;
+  margin-bottom: 22px;
+  padding: 0 6px;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.page-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: rgba(37, 99, 235, 0.14);
+  color: #2563eb;
+}
+
+.page-icon svg {
+  width: 24px;
+  height: 24px;
 }
 
 .title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
+  font-size: 34px;
+  font-weight: 900;
+  margin-bottom: 8px;
+  color: #0f172a;
 }
 
 .subtitle {
-  color: #b0b0b0;
-  font-size: 0.95rem;
+  color: #475569;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .card.summary-card {
-  background: rgba(80, 140, 255, 0.07);
-  border: 1px solid rgba(80, 140, 255, 0.2);
-  border-radius: 1rem;
-  padding: 1.3rem;
-  margin-bottom: 1rem;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(255, 255, 255, 0.9));
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 28px;
+  padding: 26px;
+  margin-bottom: 22px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.10);
 }
 
 .summary-label {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #48576f;
+  letter-spacing: 0.12em;
+  color: #1e3a8a;
 }
 
 .summary-value {
-  font-size: 2.2rem;
-  font-weight: 800;
+  font-size: 3.2rem;
+  font-weight: 900;
   margin: 0.4rem 0;
+  color: #0f172a;
 }
 
 .summary-note {
-  color: #4f5d72;
+  color: #475569;
   font-size: 0.95rem;
+  line-height: 1.7;
 }
 
 .state.loading,
 .state.error,
 .empty {
-  padding: 1.25rem;
-  margin: 1rem 0;
-  border-radius: 1rem;
+  padding: 18px 20px;
+  margin: 18px 0;
+  border-radius: 22px;
   text-align: center;
+  font-weight: 700;
 }
 
 .state.loading {
-  background: #f0f7ff;
-  color: #1b3b6d;
+  background: #eff6ff;
+  color: #1d4ed8;
 }
 
 .state.error {
-  background: #fdecea;
-  color: #8f1e1e;
+  background: #fee2e2;
+  color: #991b1b;
 }
 
 .empty {
-  background: #fff8e9;
-  color: #7b5f00;
+  background: #fffbeb;
+  color: #92400e;
 }
 
 .list {
   display: grid;
-  gap: 0.85rem;
+  gap: 14px;
 }
 
 .reward-item {
@@ -79,23 +111,40 @@
   justify-content: space-between;
   gap: 1rem;
   align-items: center;
-  padding: 1rem;
-  border-radius: 1rem;
-  border: 1px solid rgba(115, 130, 170, 0.16);
+  padding: 18px 20px;
+  border-radius: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
   background: #ffffff;
+  box-shadow: 0 20px 44px rgba(15, 23, 42, 0.08);
 }
 
 .reward-title {
-  font-weight: 700;
+  font-weight: 800;
+  color: #0f172a;
 }
 
 .reward-meta {
-  color: #6e7b94;
+  color: #64748b;
   font-size: 0.95rem;
 }
 
 .points {
-  font-size: 1.7rem;
-  font-weight: 800;
-  color: #1a4fff;
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: #2563eb;
+}
+
+@media (max-width: 720px) {
+  .rewards-page {
+    padding: 24px 16px 120px;
+  }
+
+  .reward-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .points {
+    align-self: flex-end;
+  }
 }

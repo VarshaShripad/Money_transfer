@@ -1,78 +1,98 @@
 .history-page {
   min-height: 100vh;
-  padding: 28px 24px 110px;
-  background: #F0EFEB;
+  padding: 34px 24px 120px;
+  background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.12), transparent 18%),
+    radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.08), transparent 22%),
+    #f7faff;
 }
 
 .header {
   max-width: 980px;
-  margin: 0 auto 16px;
+  margin: 0 auto 24px;
+  padding: 0 6px;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.page-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: rgba(37, 99, 235, 0.14);
+  color: #2563eb;
+}
+
+.page-icon svg {
+  width: 24px;
+  height: 24px;
 }
 
 .header .title {
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 900;
   color: #0f172a;
 }
 
 .header .subtitle {
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: 15px;
   font-weight: 700;
-  color: #64748b;
+  color: #475569;
 }
 
-/* Card */
 .card {
   max-width: 980px;
   margin: 0 auto;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  padding: 16px;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow: 0 24px 58px rgba(15, 23, 42, 0.10);
 }
 
-/* Tabs (pill style) */
 .tabs {
   display: flex;
   gap: 10px;
-  padding: 6px;
-  background: #f1f5f9;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  margin-bottom: 14px;
+  padding: 8px;
+  background: #eff6ff;
+  border-radius: 20px;
+  margin-bottom: 22px;
 }
 
 .tab {
   flex: 1;
-  height: 40px;
+  min-height: 46px;
   border: none;
-  border-radius: 14px;
+  border-radius: 18px;
   font-weight: 900;
   cursor: pointer;
   background: transparent;
-  color: #334155;
-  transition: background 120ms ease, color 120ms ease, box-shadow 120ms ease;
+  color: #475569;
+  transition: background 150ms ease, color 150ms ease, box-shadow 150ms ease;
 }
 
 .tab:hover {
-  background: #e2e8f0;
+  background: rgba(59, 130, 246, 0.12);
 }
 
 .tab.active {
-  background: #7cb0ec;
-  color: #000000;
- // box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
 }
 
-/* States */
 .state {
-  border-radius: 14px;
-  padding: 12px 14px;
+  border-radius: 18px;
+  padding: 16px 18px;
   font-weight: 800;
   font-size: 13px;
-  margin: 10px 0;
+  margin: 14px 0;
 }
 
 .state.loading {
@@ -82,45 +102,42 @@
 }
 
 .state.error {
-  background: #fff1f2;
-  border: 1px solid #fecdd3;
-  color: #9f1239;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
 }
 
 .empty {
-  padding: 18px 14px;
-  border-radius: 14px;
+  padding: 20px 18px;
+  border-radius: 18px;
   border: 1px dashed #cbd5e1;
   background: #f8fafc;
   color: #64748b;
   font-weight: 800;
 }
 
-/* List */
 .list {
   display: grid;
-  gap: 10px;
+  gap: 14px;
 }
 
 .txn {
   display: flex;
   justify-content: space-between;
-  gap: 14px;
-
-  padding: 14px;
-  border-radius: 16px;
-  border: 1px solid #e5e7eb;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.20);
   background: #ffffff;
-
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
-  transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease, background 120ms ease;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+  transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
 }
 
 .txn:hover {
-  transform: translateY(-1px);
-  border-color: #cbd5e1;
-  background: #f8fafc;
-  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.35);
+  background: #f8fbff;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
 }
 
 .left .row1 {
@@ -151,38 +168,38 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
 }
+
 .amount {
-  font-weight: 600;
+  font-weight: 700;
   text-align: right;
 }
 
 .debit {
-  color: #e53935;
+  color: #dc2626;
 }
 
 .credit {
-  color: #43a047;
+  color: #16a34a;
 }
 
 .badge {
   display: inline-flex;
   align-self: flex-end;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 900;
 }
 
-/* Responsive */
 @media (max-width: 720px) {
   .history-page {
-    padding: 22px 14px 110px;
+    padding: 24px 16px 120px;
   }
 
   .header .title {
-    font-size: 28px;
+    font-size: 30px;
   }
 
   .txn {
@@ -197,8 +214,9 @@
     align-items: center;
     text-align: left;
   }
+}
 
   .badge {
     align-self: auto;
   }
-}
+

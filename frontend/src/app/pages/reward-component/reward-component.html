@@ -1,8 +1,17 @@
 <div class="rewards-page">
 
   <div class="header">
-    <div class="title">Rewards</div>
-    <div class="subtitle">Earned reward points from eligible transfers</div>
+    <div class="header-title">
+      <span class="page-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2l2.76 5.59 6.16.9-4.46 4.35 1.05 6.13L12 17.77 6.49 18.97l1.05-6.13L3.08 8.49l6.16-.9L12 2z" />
+        </svg>
+      </span>
+      <div>
+        <div class="title">Rewards</div>
+        <div class="subtitle">Earned reward points from eligible transfers</div>
+      </div>
+    </div>
   </div>
 
   <div class="card summary-card" *ngIf="!loading && !error && rewardSummary">

@@ -1,40 +1,70 @@
 .profile-page {
-  padding: 24px;
-  padding-bottom: 90px;
+  min-height: 100vh;
+  padding: 34px 24px 120px;
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), transparent 18%),
+    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.08), transparent 22%),
+    #f7fbff;
 }
 
 .card {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  max-width: 720px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 28px;
+  padding: 30px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.10);
+  border: 1px solid rgba(148, 163, 184, 0.22);
 }
 
 .greeting {
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 22px;
+  color: #0f172a;
+}
+
+.profile-icon {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: rgba(37, 99, 235, 0.14);
+  color: #2563eb;
+}
+
+.profile-icon svg {
+  width: 24px;
+  height: 24px;
 }
 
 .info {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  gap: 18px;
 }
 
 .label {
-  font-weight: 500;
-  margin-right: 6px;
+  font-weight: 700;
+  color: #475569;
 }
 
 .balance {
-  font-weight: 600;
-  color: #2e7d32;
+  font-weight: 900;
+  color: #0f172a;
 }
 
 .state {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 26px;
+  padding: 16px 14px;
+  border-radius: 20px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #dbeafe;
+  font-weight: 700;
 }
 
 .error {
