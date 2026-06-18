@@ -12,23 +12,45 @@
       Hi, {{ account.holderName }}
     </div>
 
+    
     <div class="info">
-      <div>
-        <span class="label">Account ID:</span>
-        <span>{{ account.id }}</span>
+      <div class="stat">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3h18v4H3z" />
+            <path d="M5 21h14a2 2 0 0 0 2-2V9H3v10a2 2 0 0 0 2 2z" />
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="label">Account ID</div>
+          <div class="stat-value">{{ account.id }}</div>
+        </div>
       </div>
 
-      <div>
-        <span class="label">Balance:</span>
-        <span class="balance">
-          ₹ {{ balance | number:'1.2-2' }}
-        </span>
+      <div class="stat">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1v22" />
+            <path d="M17 5H9a4 4 0 0 0 0 8h6a4 4 0 0 1 0 8H7" />
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="label">Balance</div>
+          <div class="stat-value balance">₹ {{ balance | number:'1.2-2' }}</div>
+        </div>
       </div>
 
-      <div>
-        <span class="label">Reward Points:</span>
-        <span class="balance" *ngIf="totalPoints !== undefined">{{ totalPoints }}</span>
-        <span class="balance" *ngIf="totalPoints === undefined">-</span>
+      <div class="stat">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l2.76 5.59L20 8.5l-4 3.9.95 6.02L12 17.8 7.05 18.42 8 12.4 4 8.5l5.24-.91L12 2z" />
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="label">Reward Points</div>
+          <div class="stat-value" *ngIf="totalPoints !== undefined">{{ totalPoints }}</div>
+          <div class="stat-value" *ngIf="totalPoints === undefined">-</div>
+        </div>
       </div>
     </div>
 

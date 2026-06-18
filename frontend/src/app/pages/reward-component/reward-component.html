@@ -15,10 +15,22 @@
   </div>
 
   <div class="card summary-card" *ngIf="!loading && !error && rewardSummary">
-    <div class="summary-label">Total Reward Points</div>
-    <div class="summary-value">{{ rewardSummary.totalRewardPoints }}</div>
-    <div class="summary-note">
-      Rewards are earned for successful transfers over ₹100, at 1 point per ₹100 transferred.
+    <div class="summary-inner">
+      <div class="summary-left">
+        <div class="summary-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l2.76 5.59L20 8.5l-4 3.9.95 6.02L12 17.8 7.05 18.42 8 12.4 4 8.5l5.24-.91L12 2z" />
+          </svg>
+        </div>
+        <div>
+          <div class="summary-label">Total Reward Points</div>
+          <div class="summary-value">{{ rewardSummary.totalRewardPoints }}</div>
+        </div>
+      </div>
+
+      <div class="summary-note">
+        Rewards are earned for successful transfers over ₹100, at 1 point per ₹100 transferred.
+      </div>
     </div>
   </div>
 
@@ -45,19 +57,19 @@
       *ngFor="let reward of (rewardSummary?.rewards ?? []); trackBy: trackByReward">
 
       <div class="left">
-        <div class="reward-title">
-          Transaction {{ reward.transactionId }}
+        <div class="reward-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l2.76 5.59 6.16.9-4.46 4.35 1.05 6.13L12 17.77 6.49 18.97l1.05-6.13L3.08 8.49l6.16-.9L12 2z" />
+          </svg>
         </div>
-
-        <div class="reward-meta">
-          Earned on {{ reward.earnedOn | date:'medium' }}
+        <div class="reward-text">
+          <div class="reward-title">Transaction {{ reward.transactionId }}</div>
+          <div class="reward-meta">Earned on {{ reward.earnedOn | date:'medium' }}</div>
         </div>
       </div>
 
       <div class="right">
-        <div class="points">
-          +{{ reward.rewardPoints }}
-        </div>
+        <div class="points">+{{ reward.rewardPoints }}</div>
       </div>
 
     </div>
