@@ -60,7 +60,7 @@
 
     <!-- List -->
     <div class="list" *ngIf="!loading && !error && filteredTxs?.length">
-      <div class="txn" *ngFor="let tx of filteredTxs">
+      <div class="txn" [ngClass]="{ 'txn-success': tx.status === 'SUCCESS', 'txn-failed': tx.status !== 'SUCCESS' }" *ngFor="let tx of filteredTxs">
         <div class="left">
           <div class="row1">
             <div class="txn-title">

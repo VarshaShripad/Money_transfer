@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth-service';
 import { AccountService, AccountResponse } from '../../services/account-service';
+import { RewardService } from '../../services/reward-service';
 import { NavbarComponent } from '../../shared/components/navBar/navbar-component/navbar-component';
 
 @Component({
@@ -15,12 +16,14 @@ export class ProfileComponent implements OnInit {
 
   account?: AccountResponse;
   balance?: number;
+  totalPoints?: number;
   loading = true;
   error = '';
 
   constructor(
     private auth: AuthService,
     private accountApi: AccountService,
+    private rewardApi: RewardService,
     private cd: ChangeDetectorRef
   ) {}
 
@@ -54,6 +57,18 @@ export class ProfileComponent implements OnInit {
         this.error = 'Failed to load balance.';
         this.loading = false;
         this.cd.detectChanges();
+      }
+    });
+
+    // Fetch total reward points for the logged-in user
+    this.rewardApi.getTotalPoints().subscribe({
+      next: (pts) => {
+        this.totalPoints = pts as number;
+        this.cd.detectChanges();
+      },
+      error: () => {
+        // silently ignore reward fetch errors but log a lightweight message
+        console.warn('Failed to load reward points');
       }
     });
   }

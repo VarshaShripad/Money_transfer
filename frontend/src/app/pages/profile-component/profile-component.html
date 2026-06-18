@@ -24,6 +24,12 @@
           ₹ {{ balance | number:'1.2-2' }}
         </span>
       </div>
+
+      <div>
+        <span class="label">Reward Points:</span>
+        <span class="balance" *ngIf="totalPoints !== undefined">{{ totalPoints }}</span>
+        <span class="balance" *ngIf="totalPoints === undefined">-</span>
+      </div>
     </div>
 
   </div>
