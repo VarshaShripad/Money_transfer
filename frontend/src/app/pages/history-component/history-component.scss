@@ -12,6 +12,27 @@
   padding: 0 6px;
 }
 
+/* Admin lookup styles (centered, consistent card-like appearance) */
+.admin-search {
+  max-width: 980px;
+  margin: 0 auto 18px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  box-shadow: 0 12px 30px rgba(15,23,42,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-search-inner { display:flex; flex-direction:column; gap:8px; align-items:center; }
+.admin-label { font-weight:800; color:#475569; }
+.admin-search-row { display:flex; gap:10px; align-items:center; }
+.admin-search-row input { padding:10px 12px; border-radius:10px; border:1px solid #e2e8f0; width:140px; }
+.admin-btn { padding:8px 14px; border-radius:10px; border:none; background:#2563eb; color:#fff; font-weight:800; cursor:pointer; }
+.admin-btn:hover { background:#1e40af; }
+
 .header-title {
   display: flex;
   align-items: center;

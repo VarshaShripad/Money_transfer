@@ -18,12 +18,13 @@
   </div>
 
   <div class="admin-search" *ngIf="isAdmin">
-    <div class="admin-search-label">Admin History Lookup</div>
-    <div class="admin-search-row">
-      <input type="number" min="1" #historyAccountId placeholder="Enter account ID" />
-      <button type="button" (click)="loadTransactions(historyAccountId.valueAsNumber)">Load History</button>
+    <div class="admin-search-inner">
+      <div class="admin-label">Enter the account id to view history</div>
+      <div class="admin-search-row">
+        <input type="number" min="1" #historyAccountId placeholder="Account ID" />
+        <button type="button" class="admin-btn" (click)="loadTransactions(historyAccountId.valueAsNumber)">Load History</button>
+      </div>
     </div>
-    <div class="admin-search-help">Viewing history for account {{ viewAccountId }}</div>
   </div>
 
   <div class="card">

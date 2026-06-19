@@ -1,12 +1,14 @@
 <div class="profile-page">
 
   <div class="admin-search" *ngIf="isAdmin">
-    <div class="admin-search-label">Admin Account Lookup</div>
-    <div class="admin-search-row">
-      <input type="number" min="1" #adminAccountId placeholder="Enter account ID" />
-      <button type="button" (click)="loadAccountData(adminAccountId.valueAsNumber)">View Account</button>
+    <div class="admin-search-inner">
+      <div class="admin-label">Enter the account id to view profile</div>
+      <div class="admin-search-row">
+        <input type="number" min="1" #adminAccountId placeholder="Account ID" />
+        <button type="button" class="admin-btn" (click)="loadAccountData(adminAccountId.valueAsNumber)">View Account</button>
+      </div>
+      <div class="admin-search-help">Leave blank to view your own account.</div>
     </div>
-    <div class="admin-search-help">Leave blank to view your own account.</div>
   </div>
 
   <div class="card" *ngIf="!loading && account">
