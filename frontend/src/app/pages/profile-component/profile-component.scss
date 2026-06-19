@@ -11,21 +11,36 @@
 
 .card {
   width: min(760px, 96%);
-  background: rgba(255, 255, 255, 0.98);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), #f9fbff 100%);
   border-radius: 30px;
   padding: 34px 36px;
-  box-shadow: 0 40px 90px rgba(15, 23, 42, 0.12);
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.16);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  backdrop-filter: blur(18px);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.greeting-copy {
+  display: grid;
+  gap: 8px;
 }
 
 .greeting {
-  display: flex;
-  align-items: center;
-  gap: 14px;
   font-size: 32px;
   font-weight: 900;
-  margin-bottom: 22px;
-  color: #0f172a;
+  color: #111827;
+}
+
+.subtitle {
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .profile-icon {
@@ -52,26 +67,48 @@
 .stat {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: rgba(248, 250, 252, 0.8);
-  border: 1px solid rgba(148, 163, 184, 0.08);
+  gap: 16px;
+  padding: 18px 18px;
+  border-radius: 22px;
+  background: #f8fbff;
+  border: 1px solid rgba(148, 163, 184, 0.10);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
 }
 
 .stat-icon {
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   display: grid;
   place-items: center;
-  border-radius: 12px;
+  border-radius: 16px;
   background: rgba(37, 99, 235, 0.10);
   color: #2563eb;
+  flex-shrink: 0;
 }
 
 .stat-icon svg {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
+}
+
+.stat-icon--blue {
+  background: rgba(59, 130, 246, 0.14);
+  color: #2563eb;
+}
+
+.stat-icon--green {
+  background: rgba(16, 185, 129, 0.14);
+  color: #047857;
+}
+
+.stat-icon--yellow {
+  background: rgba(234, 179, 8, 0.16);
+  color: #b45309;
 }
 
 .stat-content .label {

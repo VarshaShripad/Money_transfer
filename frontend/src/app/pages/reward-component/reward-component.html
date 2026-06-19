@@ -14,6 +14,15 @@
     </div>
   </div>
 
+  <div class="admin-search" *ngIf="isAdmin">
+    <div class="admin-search-label">Admin Reward Lookup</div>
+    <div class="admin-search-row">
+      <input type="number" min="1" #rewardAccountId placeholder="Enter account ID" />
+      <button type="button" (click)="loadRewards(rewardAccountId.valueAsNumber)">View Rewards</button>
+    </div>
+    <div class="admin-search-help" *ngIf="viewAccountId">Viewing rewards for account {{ viewAccountId }}</div>
+  </div>
+
   <div class="card summary-card" *ngIf="!loading && !error && rewardSummary">
     <div class="summary-inner">
       <div class="summary-left">

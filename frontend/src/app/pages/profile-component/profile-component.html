@@ -1,21 +1,32 @@
 <div class="profile-page">
 
+  <div class="admin-search" *ngIf="isAdmin">
+    <div class="admin-search-label">Admin Account Lookup</div>
+    <div class="admin-search-row">
+      <input type="number" min="1" #adminAccountId placeholder="Enter account ID" />
+      <button type="button" (click)="loadAccountData(adminAccountId.valueAsNumber)">View Account</button>
+    </div>
+    <div class="admin-search-help">Leave blank to view your own account.</div>
+  </div>
+
   <div class="card" *ngIf="!loading && account">
 
-    <div class="greeting">
+    <div class="card-header">
       <span class="profile-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
           <circle cx="12" cy="7" r="4" />
         </svg>
       </span>
-      Hi, {{ account.holderName }}
+      <div class="greeting-copy">
+        <div class="greeting">Hi, {{ account.holderName }}</div>
+        <div class="subtitle">Your account summary is ready. Keep tracking your finances with ease.</div>
+      </div>
     </div>
 
-    
     <div class="info">
       <div class="stat">
-        <div class="stat-icon">
+        <div class="stat-icon stat-icon--blue">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 3h18v4H3z" />
             <path d="M5 21h14a2 2 0 0 0 2-2V9H3v10a2 2 0 0 0 2 2z" />
@@ -28,7 +39,7 @@
       </div>
 
       <div class="stat">
-        <div class="stat-icon">
+        <div class="stat-icon stat-icon--green">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 1v22" />
             <path d="M17 5H9a4 4 0 0 0 0 8h6a4 4 0 0 1 0 8H7" />
@@ -41,7 +52,7 @@
       </div>
 
       <div class="stat">
-        <div class="stat-icon">
+        <div class="stat-icon stat-icon--yellow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2l2.76 5.59L20 8.5l-4 3.9.95 6.02L12 17.8 7.05 18.42 8 12.4 4 8.5l5.24-.91L12 2z" />
           </svg>

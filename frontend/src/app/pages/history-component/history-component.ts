@@ -1,6 +1,8 @@
-import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { forkJoin, of } from 'rxjs';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AccountService, TransactionResponse } from '../../services/account-service';
 import { AuthService } from '../../services/auth-service';
 import { NavbarComponent } from '../../shared/components/navBar/navbar-component/navbar-component';
@@ -18,6 +20,9 @@ export class HistoryComponent implements OnInit {
   loading = true;
   error = '';
   accountId!: number;
+  viewAccountId!: number;
+  isAdmin = false;
+  accountNames = new Map<number, string>();
 
   filter: 'ALL' | 'SENT' | 'RECEIVED' = 'ALL';
 
@@ -38,13 +43,57 @@ export class HistoryComponent implements OnInit {
     }
 
     this.accountId = id;
+    this.viewAccountId = id;
+    this.isAdmin = this.auth.isAdmin;
 
-    this.accountApi.getTransactions(id).subscribe({
-      next: (res) => {
-        this.txs = (res ?? []).sort((a, b) => {
-          return new Date(b.createdOn).getTime() - new Date(a.createdOn).getTime();
+    this.loadTransactions(id);
+  }
+
+  loadTransactions(accountId: number) {
+    const targetId = Number(accountId);
+    const resolvedId = this.isAdmin && (!targetId || targetId <= 0)
+      ? this.auth.accountId
+      : targetId;
+
+    if (!resolvedId || resolvedId <= 0) {
+      this.error = 'Enter a valid account ID.';
+      return;
+    }
+
+    this.error = '';
+    this.loading = true;
+    this.viewAccountId = resolvedId;
+
+    this.accountApi.getTransactions(resolvedId).pipe(
+      switchMap((txs) => {
+        this.txs = (txs ?? []).sort((a, b) => new Date(b.createdOn).getTime() - new Date(a.createdOn).getTime());
+
+        const counterpartIds = Array.from(new Set(
+          this.txs
+            .flatMap(tx => [tx.fromAccountId, tx.toAccountId])
+            .filter(accountId => accountId !== this.viewAccountId)
+        ));
+
+        if (!counterpartIds.length) {
+          return of([]);
+        }
+
+        return forkJoin(
+          counterpartIds.map((counterpartId) =>
+            this.accountApi.getAccount(counterpartId).pipe(
+              map((acc) => ({ id: counterpartId, name: acc.holderName })),
+              catchError(() => of({ id: counterpartId, name: `Account ${counterpartId}` }))
+            )
+          )
+        );
+      }),
+      tap((accounts) => {
+        accounts.forEach((acct) => {
+          this.accountNames.set(acct.id, acct.name);
         });
-
+      })
+    ).subscribe({
+      next: () => {
         this.loading = false;
         this.cd.detectChanges();
       },
@@ -63,11 +112,11 @@ export class HistoryComponent implements OnInit {
 
   // Determine sent/received dynamically
   isSent(tx: TransactionResponse) {
-    return tx.fromAccountId === this.accountId;
+    return tx.fromAccountId === this.viewAccountId;
   }
 
   isReceived(tx: TransactionResponse) {
-    return tx.toAccountId === this.accountId;
+    return tx.toAccountId === this.viewAccountId;
   }
 
   get filteredTxs(): TransactionResponse[] {
@@ -82,6 +131,11 @@ export class HistoryComponent implements OnInit {
 
   amountClass(tx: TransactionResponse) {
     return this.isSent(tx) ? 'amount debit' : 'amount credit';
+  }
+
+  getContactName(tx: TransactionResponse) {
+    const accountId = this.isSent(tx) ? tx.toAccountId : tx.fromAccountId;
+    return this.accountNames.get(accountId) ?? `Account ${accountId}`;
   }
 
   badgeClass(status: string) {

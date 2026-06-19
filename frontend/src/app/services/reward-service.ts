@@ -23,6 +23,10 @@ export class RewardService {
     return this.http.get<RewardSummary>('/api/v1/rewards/summary');
   }
 
+  getRewardSummaryByUser(userId: number) {
+    return this.http.get<RewardSummary>(`/api/v1/rewards/user/${userId}`);
+  }
+
   getRewards() {
     return this.http.get<RewardEntry[]>('/api/v1/rewards');
   }

@@ -17,6 +17,15 @@
     </div>
   </div>
 
+  <div class="admin-search" *ngIf="isAdmin">
+    <div class="admin-search-label">Admin History Lookup</div>
+    <div class="admin-search-row">
+      <input type="number" min="1" #historyAccountId placeholder="Enter account ID" />
+      <button type="button" (click)="loadTransactions(historyAccountId.valueAsNumber)">Load History</button>
+    </div>
+    <div class="admin-search-help">Viewing history for account {{ viewAccountId }}</div>
+  </div>
+
   <div class="card">
 
     <!-- Tabs -->
@@ -66,7 +75,7 @@
             <div class="txn-title">
               {{ isSent(tx) ? 'Transfer to' : 'Received from' }}
               <span class="acct">
-                {{ isSent(tx) ? tx.toAccountId : tx.fromAccountId }}
+                {{ getContactName(tx) }}
               </span>
             </div>
           </div>

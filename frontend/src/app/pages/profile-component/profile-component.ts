@@ -17,6 +17,8 @@ export class ProfileComponent implements OnInit {
   account?: AccountResponse;
   balance?: number;
   totalPoints?: number;
+  targetAccountId?: number;
+  isAdmin = false;
   loading = true;
   error = '';
 
@@ -29,6 +31,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     const id = this.auth.accountId;
+    this.isAdmin = this.auth.isAdmin;
 
     if (!id) {
       this.error = 'No account found. Please login again.';
@@ -36,18 +39,38 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    this.accountApi.getAccount(id).subscribe({
+    this.loadAccountData(id);
+  }
+
+  loadAccountData(accountId?: number) {
+    let resolvedId = Number(accountId);
+    if (!resolvedId || resolvedId <= 0) {
+      if (this.isAdmin) {
+        resolvedId = this.auth.accountId ?? 0;
+      }
+    }
+
+    if (!resolvedId || resolvedId <= 0) {
+      this.error = 'Enter a valid account ID.';
+      return;
+    }
+
+    this.error = '';
+    this.loading = true;
+
+    this.accountApi.getAccount(resolvedId).subscribe({
       next: (acc) => {
         this.account = acc;
         this.cd.detectChanges();
       },
       error: () => {
         this.error = 'Failed to load account info.';
+        this.loading = false;
         this.cd.detectChanges();
       }
     });
 
-    this.accountApi.getBalance(id).subscribe({
+    this.accountApi.getBalance(resolvedId).subscribe({
       next: (bal) => {
         this.balance = bal;
         this.loading = false;
@@ -60,16 +83,27 @@ export class ProfileComponent implements OnInit {
       }
     });
 
-    // Fetch total reward points for the logged-in user
-    this.rewardApi.getTotalPoints().subscribe({
-      next: (pts) => {
-        this.totalPoints = pts as number;
-        this.cd.detectChanges();
-      },
-      error: () => {
-        // silently ignore reward fetch errors but log a lightweight message
-        console.warn('Failed to load reward points');
-      }
-    });
+    if (this.isAdmin) {
+      this.rewardApi.getRewardSummaryByUser(resolvedId).subscribe({
+        next: (summary) => {
+          this.totalPoints = summary.totalRewardPoints;
+          this.cd.detectChanges();
+        },
+        error: () => {
+          this.totalPoints = undefined;
+          console.warn('Failed to load reward points for account', resolvedId);
+        }
+      });
+    } else {
+      this.rewardApi.getTotalPoints().subscribe({
+        next: (pts) => {
+          this.totalPoints = pts as number;
+          this.cd.detectChanges();
+        },
+        error: () => {
+          console.warn('Failed to load reward points');
+        }
+      });
+    }
   }
 }
