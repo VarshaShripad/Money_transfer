@@ -88,7 +88,7 @@ export class TransferComponent {
       idempotencyKey: uuidv4()
     };
 
-    this.transferApi.transfer(body).subscribe({
+    this.transferApi.transferSecure(body).subscribe({
       next: (res) => {
         this.loading = false;
         this.success = res;
