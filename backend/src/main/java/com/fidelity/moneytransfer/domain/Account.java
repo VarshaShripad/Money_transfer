@@ -63,6 +63,7 @@ public class Account {
     public String getOwnerUsername() { return username; }
 
     // ---------- Setters ----------
+    public void setId(Long id) { this.id = id; }
     public void setHolderName(String holderName) { this.holderName = holderName; }
     public void setStatus(AccountStatus status) { this.status = status; }
     public void setUsername(String username) { this.username = username; }
